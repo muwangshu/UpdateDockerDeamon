@@ -38,10 +38,10 @@ def main():
                 }
                 # 过滤"正常"或"新增"的行
                 if row_data["STATUS"] in ['正常', '新增']:
-                    data["registry-mirrors"].append(row_data["URL"])
+                    data["registry-mirrors"].append("https://"+row_data["URL"])
         
         # 保存为JSON文件，使用UTF-8编码
-        output_file = '/etc/docker/daemon.json'
+        output_file = 'daemon.json'
         with open(output_file, 'w+', encoding='utf-8') as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
 
